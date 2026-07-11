@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    { "src": "api/chat.py",         "use": "@vercel/python" },
+    { "src": "api/analyze.py",      "use": "@vercel/python" },
+    { "src": "api/generate_doc.py", "use": "@vercel/python" },
+    { "src": "api/upload_doc.py",   "use": "@vercel/python" },
+    { "src": "api/transcribe.py",   "use": "@vercel/python" },
+    { "src": "public/**",           "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/chat",         "dest": "api/chat.py" },
+    { "src": "/api/analyze",      "dest": "api/analyze.py" },
+    { "src": "/api/generate_doc", "dest": "api/generate_doc.py" },
+    { "src": "/api/upload_doc",   "dest": "api/upload_doc.py" },
+    { "src": "/api/transcribe",   "dest": "api/transcribe.py" },
+    { "src": "/(.*)",             "dest": "public/$1" }
+  ]
+}
